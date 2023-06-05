@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+
+   <class name = "com.academy.cic.model.Course" table = "COURSE">
+      
+      <meta attribute = "class-description">
+         This class contains the course detail. 
+      </meta>
+      
+      <id name = "courseId" type = "int" column = "course_id">
+         <generator class="native"/>
+      </id>
+      
+      <property name = "name" column = "name" type = "string"/>
+      <property name = "startDate" column = "start_date" type = "date"/>
+      <property name = "endDate" column = "end_date" type = "date"/>
+         
+      <set name="setModule" cascade="all">
+		  <key column = "course_id" not-null="true"/>
+		  <one-to-many class="com.academy.cic.model.Module"/>
+	  </set>  
+       
+   </class>
+
+</hibernate-mapping>
